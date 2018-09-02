@@ -1,0 +1,162 @@
+---
+title: "Vetor e Fator"
+author: "Osemar Xavier"
+date: "1 de Setembro de 2018"
+output: html_document
+---
+### Criacao de um vetor com a funcao C
+```{r vetor}
+vetor <-c(1,2,3,4,5,6,7)
+vetor
+```
+### Vetor de caracters
+```{r }
+nomes <-c("Maria", "Joao", "Luiz")
+nomes
+```
+### Tamanho do vetor
+```{r }
+length(nomes)
+
+length(vetor)
+```
+### verificar se a colecao e um vetor
+```{r }
+is.vector(vetor)
+```
+### vetor numerico
+```{r }
+numeros <-1:10
+numeros
+```
+### funcao seq
+```{r }
+numero2 <- seq(0,1, by= 0.1)
+numero2
+```
+### vetores -> de tipos diferentes
+```{r }
+c("a", numeros)
+```
+### Operacoes matematicas com vetores em R
+```{r }
+operacao <- c(10,20,30,40)
+operacao + 3
+operacao - 3
+operacao * 3
+operacao / 3
+```
+
+### vetor de elementos repetidos
+```{r }
+repetidos <-rep(1,5)
+repetidos
+
+repetidos2 <-rep(c(1,2), c(3,4))
+repetidos2
+```
+
+### Funcao utilizada para criar vetores de caracteres .paste()
+```{r }
+n<- c("lucas", "Bia", "Rui")
+paste(n, 1:3)
+
+paste("Maria", 2)
+
+rep(paste(n, 1:3, sep=""), c(4,4,3))
+
+pas <- paste(n, 1:3, sep="")
+rep(pas, c(4,4,3))
+```
+### Definindo e diferenciando vetor de um factor
+##### Exemplo de um vetor
+##### Class -> Em vetores sao identificados como 'Characteres'
+##### Class -> Em fatores sao identificados como 'Levels'
+##### Atribute -> Identifica se e um vetor ou um fator
+```{r }
+estados <- c("RJ", "SP", "MG")
+estados
+class(estados)
+attributes(estados)
+```
+### Exemplo de um fator
+```{r }
+estadosf <- factor(estados)
+estadosf
+class(estadosf)
+attributes(estadosf)
+```
+### Table -> Usado para contar e trazer o quantitativo na forma de tabela
+```{r }
+pessoas <-c("Rui", "Bia", "Ana", "Leo", "Nat", "Rui", "Leo", "Bia", "Leo")
+pessoas
+table(pessoas)
+```
+### O Table e o factor foi utilizado nesse exemplo para que faca 
+### a contagem do vetor acima, identificando os levels, como o 'Bob` nao existe
+### o valor dele sera zero.
+```{r }
+pessoasn <-factor(pessoas, levels = c("Ana", "Rui", "Bia", "Nat", "Leo", "Bob"))
+table(pessoasn)
+```
+###reagrupando fatores
+```{r }
+pessoassite <- pessoasn
+levels(pessoassite)
+```
+### Criterio de grupo
+```{r }
+levels(pessoassite) <- c("Site", "Site", "Site", "Site", "App", "App")
+table(pessoassite)
+```
+### ordenacao de fatores
+```{r }
+grau <- c("medio", "baixo", "medio", "baixo", "alto", "medio", "alto", "medio")
+table(grau)
+factor(grau, ord=T)
+factor(grau, ord=T, levels = c("baixo","medio","alto"))
+```
+### Funcao ordered
+```{r }
+ordered(grau, levels = c("baixo", "medio", "alto"))
+```
+###Ordem inversa
+```{r }
+vec <- (1:10)
+vec
+rev(vec)
+```
+### criacao dinamica
+```{r }
+vec <-round(rnorm(7, m=70, sd=10))
+vec
+```
+###ordenar
+```{r }
+sort(vec)
+```
+###ranqueamento
+```{r }
+rank(vec)
+```
+### which -> posicao do elemento que obedece a um determinado criterio
+```{r }
+which(vec> 75)
+```
+### maior valor
+```{r }
+which.max(vec)
+```
+###menor valor
+```{r }
+which.min(vec)
+```
+### remover elementos
+```{r }
+vec[-5]
+vec
+```
+### remover um intervalo
+```{r }
+vec[-(2:4)]
+```
